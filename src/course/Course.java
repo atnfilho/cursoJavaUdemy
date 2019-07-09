@@ -17,12 +17,12 @@ public class Course {
     public static void main(String[] args) {
         // TODO code application logic here
         // conversão implícita e conversão explícita (CAST)
-        
-        char a = 'r';
-        
-        String a1 = String.valueOf(a);
-        System.out.println(a1);
-        
+      
+      char myChar = 'a';
+      
+      String str = String.valueOf(myChar);
+      
+        System.out.println(str);
 
     }
 
