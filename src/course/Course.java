@@ -19,33 +19,14 @@ public class Course {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        // conversão implícita e conversão explícita (CAST)
-        
-        Locale.setDefault(Locale.US);
-        
-        String name, lastName;
-        int qtdeBed, age;
-        double price, height;
-        
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.println("Enter your full name:");
-        name = sc.nextLine();
-        System.out.println(name);
-        System.out.println("How many bedrooms are there in your house?");
-        qtdeBed = sc.nextInt();
-        System.out.println(qtdeBed);
-        System.out.println("Enter product price:");
-        price = sc.nextDouble();
-        System.out.println(price);
-        System.out.println("Enter your last name, age and height (same line):");
-        lastName = sc.next();
-        age = sc.nextInt();
-        height = sc.nextDouble();
-        System.out.println(lastName);
-        System.out.println(age);
-        System.out.println(height);
-             
+       Scanner sc = new Scanner(System.in);
+       
+       int n1 = sc.nextInt();
+       int n2 = sc.nextInt();
+       
+       int soma = n1 + n2;
+       
+       System.out.println("Soma: " + soma);
     }
 
 }
