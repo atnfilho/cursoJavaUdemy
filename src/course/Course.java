@@ -5,6 +5,7 @@
  */
 package course;
 
+import entities.Triangle;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -19,14 +20,29 @@ public class Course {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
+       Locale.setDefault(Locale.US);
+       Triangle x, y;
+       
+       x = new Triangle();
+       y = new Triangle();
+       
        Scanner sc = new Scanner(System.in);
+       System.out.println("Enter the measures of triangle x:");
+       x.a = sc.nextDouble();
+       x.b = sc.nextDouble();
+       x.c = sc.nextDouble();
        
-       int n1 = sc.nextInt();
-       int n2 = sc.nextInt();
+       System.out.println("Enter the measures of triangle y:");
+       y.a = sc.nextDouble();
+       y.b = sc.nextDouble();
+       y.c = sc.nextDouble();
        
-       int soma = n1 + n2;
+       double areaX = x.area();
+       double areaY = y.area();
+       System.out.printf("Triangle x area: %.2f%n", areaX);
+       System.out.printf("Triangle y area: %.2f%n", areaY);
        
-       System.out.println("Soma: " + soma);
     }
 
 }
