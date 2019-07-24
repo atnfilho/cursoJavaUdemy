@@ -5,7 +5,7 @@
  */
 package application;
 
-import entities.Product;
+import entities.Rectangle;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -21,25 +21,17 @@ public class Program {
     public static void main(String[] args) {
         // TODO code application logic here
 
-       Locale.setDefault(Locale.US);
-       Scanner sc = new Scanner(System.in);
-       
-        Product product = new Product();
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
         
-        System.out.println("Enter product data: ");
+        Rectangle rect = new Rectangle();
+        System.out.println("Enter rectangle width and height: ");
+        rect.width = sc.nextDouble();
+        rect.height = sc.nextDouble();
         
-        System.out.print("Name: ");
-        product.name = sc.nextLine();
-        
-        System.out.print("Price: ");
-        product.price = sc.nextDouble();
-        
-        System.out.print("Quantity in stock: ");
-        product.quantity = sc.nextInt();
-        
-        System.out.println(product.name + ", " + product.price + ", " + product.quantity);
-                
-       
+        System.out.printf("Area: %.2f%n", rect.area());
+        System.out.printf("Perimeter: %.2f%n", rect.perimeter());
+        System.out.printf("Diagonal: %.2f%n", rect.diagonal());
     }
 
 }
