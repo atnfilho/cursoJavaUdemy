@@ -11,10 +11,10 @@ package util;
  */
 public class CurrencyConverter {
     
-    public static final double IOF = 1.06;
+    public static final double IOF = 0.06;
     
     public static double dollarToReal(double cotacao, double qtde) {
         
-        return qtde * cotacao * IOF;
+        return qtde * cotacao * (1 + IOF);
     }
 }
