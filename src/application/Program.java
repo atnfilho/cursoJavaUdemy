@@ -5,9 +5,9 @@
  */
 package application;
 
-import entities.Rectangle;
 import java.util.Locale;
 import java.util.Scanner;
+import util.CurrencyConverter;
 
 /**
  *
@@ -24,14 +24,14 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
         
-        Rectangle rect = new Rectangle();
-        System.out.println("Enter rectangle width and height: ");
-        rect.width = sc.nextDouble();
-        rect.height = sc.nextDouble();
+        System.out.print("What is the dollar price? ");
+        double cotacao = sc.nextDouble();
+        System.out.print("How many dollar will be bought? ");
+        double qtde = sc.nextDouble();
         
-        System.out.printf("Area: %.2f%n", rect.area());
-        System.out.printf("Perimeter: %.2f%n", rect.perimeter());
-        System.out.printf("Diagonal: %.2f%n", rect.diagonal());
+        double amount = CurrencyConverter.dollarToReal(cotacao, qtde);
+        
+        System.out.printf("Amount to be paid in reais: %.2f%n", amount);
     }
 
 }
