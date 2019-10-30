@@ -5,11 +5,9 @@
  */
 package application;
 
-import entities.Employee;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import entities.Account;
+import entities.BusinessAccount;
+import entities.SavingsAccount;
 
 /**
  *
@@ -21,53 +19,34 @@ public class Program {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-
-        Locale.setDefault(Locale.US);
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("How many employes will be registered?");
-        int n = sc.nextInt();
-
-        List<Employee> list = new ArrayList<>();
+     
+        Account acc = new Account(1001, "Alex", 0.0);
+        BusinessAccount bacc = new BusinessAccount(500.0, 1002, "Maria", 0.0);
+        SavingsAccount sacc = new SavingsAccount(0.01, 1003, "Renata", 0.0);
+                
         
-        for (int i = 0; i < n; i++) {
+        // UPCASTING
 
-            Employee employee = new Employee();
-
-            System.out.println("Employee #" + (i + 1));
-            System.out.print("ID: ");
-            employee.setId(sc.nextInt());
-            sc.nextLine();
-            System.out.println("Name: ");
-            employee.setName(sc.nextLine());
-            System.out.println("Salary: ");
-            employee.setSalary(sc.nextDouble());
-            sc.nextLine();
-            
-            list.add(employee);
+        Account acc1 = bacc; // business account é uma conta
+        Account acc2 = sacc; // savings account é uma conta
+        
+        
+        // DOWNCASTING
+        
+        BusinessAccount acc3 = (BusinessAccount)acc1;
+        acc3.loan(200.0);
+        
+        if(acc2 instanceof BusinessAccount)
+        {
+            System.out.println("yes");
+            BusinessAccount acc4 = (BusinessAccount)acc2;
         }
-
-        System.out.println("Enter the employee id that will have salary increase: ");
-        int id = sc.nextInt();
-        sc.nextLine();
-        
-        Employee emp = list.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
-        
-        if(emp == null) {
-            System.out.println("This id does not exist!");
-        } else {
-            System.out.println("Enter the percentage: ");
-            double percentage = sc.nextDouble();
-            emp.increaseSalary(percentage);
+        else
+        {
+            System.out.println("no");
+            SavingsAccount acc4 = (SavingsAccount)acc2;
         }
         
         
-        
-        System.out.println("List of employees: ");
-        for(Employee employee : list) {            
-            System.out.println(employee);
-        }
-
-    }
+     }
 }
