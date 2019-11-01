@@ -5,9 +5,11 @@
  */
 package application;
 
-import entities.Account;
-import entities.BusinessAccount;
-import entities.SavingsAccount;
+import entities.Employee;
+import entities.OutsourcedEmployee;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -20,16 +22,44 @@ public class Program {
      */
     public static void main(String[] args) {
      
-        Account acc1 = new Account(1001, "Alex", 1000.0);
-        acc1.withdraw(200.0);
-        System.out.println(acc1.getBalance());
+        Scanner sc = new Scanner(System.in);
+                
+        System.out.print("Enter the number of employees: ");
+        int n = sc.nextInt();
+        sc.nextLine();
         
-        Account acc2 = new BusinessAccount(500.0, 1002, "Maria", 1000.0);
-        acc2.withdraw(200.0);
-        System.out.println(acc2.getBalance());
+        List<Employee> listEmployee = new ArrayList<>();
+        for(int i=1; i<=n; i++)
+        {
+            System.out.println("Employee #" + i + " data: ");
+            System.out.print("Outsourced (y/n)?");
+            char ch = sc.next().charAt(0);
+            sc.nextLine();
+            System.out.print("Name:");
+            String name = sc.nextLine();
+            System.out.print("Hours:");
+            int hours = sc.nextInt();
+            sc.nextLine();
+            System.out.print("Value per hour:");
+            double value = sc.nextDouble();
+            sc.nextLine();
+            
+            if(ch == 'y') {
+                System.out.print("Additional charge: ");
+                double charge = sc.nextDouble();
+                sc.nextLine();
+                listEmployee.add(new OutsourcedEmployee(charge, name, hours, value));
+            } else {
+                listEmployee.add(new Employee(name, hours, value));
+            }
+                     
+        }
         
-        Account acc3 = new SavingsAccount(0.01, 1003, "Bob", 1000.0);
-        acc3.withdraw(200.0);
-        System.out.println(acc3.getBalance());
+        System.out.println("");
+        System.out.println("PAYMENTS:");
+        
+        for (Employee employee : listEmployee) {
+            System.out.println(employee.getName() + " - $ " + employee.payment() );
+        }
     }
 }
