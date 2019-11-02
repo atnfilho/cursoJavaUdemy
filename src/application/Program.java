@@ -40,18 +40,24 @@ public class Program {
             char ch = sc.next().charAt(0);
             sc.nextLine();
             
-            System.out.print("Name: ");
-            String name = sc.nextLine();
-            System.out.print("Price: ");
-            Double price = sc.nextDouble();
-            sc.nextLine();
+            
             
             if(ch == 'c') {
+                System.out.print("Name: ");
+                String name = sc.nextLine();
+                System.out.print("Price: ");
+                Double price = sc.nextDouble();
+                sc.nextLine();
                 Product product = new Product(name, price);
                 list.add(product);
             }
             
-            if(ch == 'u') {
+            else if(ch == 'u') {
+                System.out.print("Name: ");
+                String name = sc.nextLine();
+                System.out.print("Price: ");
+                Double price = sc.nextDouble();
+                sc.nextLine();
                 System.out.print("Manufacture date (DD/MM/YYYY): ");
                 String date = sc.nextLine();
                 
@@ -63,22 +69,32 @@ public class Program {
                 list.add(product);
             }
             
-            if(ch == 'i') {
+            else if(ch == 'i') {
+                System.out.print("Name: ");
+                String name = sc.nextLine();
+                System.out.print("Price: ");
+                Double price = sc.nextDouble();
+                sc.nextLine();
                 System.out.print("Customs fee: ");
                 Double customsFee = sc.nextDouble();
                 
                 Product product = new ImportedProduct(customsFee, name, price);
                 
                 list.add(product);
+            } else {
+                System.out.println("Invalid selection!");
             }
             
         }
         
-        System.out.println("");
-        System.out.println("PRICE TAGS:");
+        if(list.size() > 0)
+        {
+            System.out.println("");
+            System.out.println("PRICE TAGS:");
 
-        for(Product product : list) {
-           product.priceTag();
+            for(Product product : list) {
+               product.priceTag();
+            }
         }
     }
 }
