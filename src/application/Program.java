@@ -6,9 +6,11 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -25,17 +27,16 @@ public class Program {
      */
     public static void main(String[] args) {
         
-        String path = "c:\\temp\\in.txt";
-        // try-with-resources
-        // fecha os objetos ao final da rotina
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String line = br.readLine();
-            while(line != null) {
-                System.out.println(line);
-                line = br.readLine();
+        String path = "c:\\temp\\out.txt";
+        String[] lines = {"Good morning", "Good afternoon", "Good night"};
+        
+        try (BufferedWriter bf = new BufferedWriter(new FileWriter(path, true))) {
+            for(String line : lines) {
+                bf.write(line);
+                bf.newLine();
             }
-        } catch (IOException e) {
-            System.out.println("Error");
-        } 
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
